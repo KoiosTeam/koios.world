@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subchapters",
+  "info": {
+    "singularName": "subchapter",
+    "pluralName": "subchapters",
+    "displayName": "04 - Subchapter",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Literature": {
+      "type": "richtext"
+    },
+    "Quiz": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.quiz"
+    },
+    "FurtherReadings": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.call-to-action"
+    },
+    "chapter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chapter.chapter",
+      "inversedBy": "subchapters"
+    },
+    "YouTubeURL": {
+      "type": "string",
+      "required": false
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Name",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply h-full scroll-smooth;
+  }
+  
+
+  body {
+    @apply flex flex-col min-h-full h-full bg-fill text-base text-primary-950;
+  }
+}

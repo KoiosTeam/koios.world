@@ -1,0 +1,40 @@
+{
+  "name": "strapi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "develop:production": "NODE_ENV=production strapi develop",
+    "start": "strapi start",
+    "start:production": "NODE_ENV=production strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "export": "source .env && strapi export --file strapi-export --key $ENCRYPTION_KEY && mv ./strapi-export.tar.gz.enc ./strapi-exports",
+    "export:production": "source .env && NODE_ENV=production strapi export --file strapi-export-prod --key $ENCRYPTION_KEY && mv ./strapi-export-prod.tar.gz.enc ./strapi-exports",
+    "import": "strapi import --file ./strapi-exports/strapi-export.tar.gz.enc",
+    "import:production": "source .env && NODE_ENV=production strapi import --file ./strapi-exports/strapi-export-prod.tar.gz.enc --key $ENCRYPTION_KEY", 
+    "sync:from-prod": "source .env && strapi transfer --from $STRAPI_PRODUCTION --from-token $TRANSFER_TOKEN --force"
+  },
+  "dependencies": {
+    "@strapi/plugin-graphql": "^4.11.1",
+    "@strapi/plugin-i18n": "4.11.1",
+    "@strapi/plugin-users-permissions": "4.11.1",
+    "@strapi/provider-upload-cloudinary": "^4.11.4",
+    "@strapi/strapi": "4.11.1",
+    "better-sqlite3": "8.0.1",
+    "pg": "^8.11.1",
+    "pg-connection-string": "^2.6.1"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "d1b5ed27-1f61-4961-9550-aae52085d780"
+  },
+  "engines": {
+    "node": "16.20.0",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

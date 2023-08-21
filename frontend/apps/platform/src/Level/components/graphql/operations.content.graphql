@@ -1,0 +1,83 @@
+query GetSubchapter($filters: SubchapterFiltersInput, $pagination: PaginationArg) {
+  subchapters(filters: $filters) {
+    data {
+      attributes {
+        Name
+        YouTubeURL
+        Literature
+        FurtherReadings(pagination: $pagination) {
+          Label
+          NewWindow
+          URL
+        }
+        chapter {
+          data {
+            attributes {
+              level {
+                data {
+                  attributes {
+                    chapters {
+                      data {
+                        attributes {
+                          Name
+                          Slug
+                          subchapters {
+                            data {
+                              attributes {
+                                Name
+                                Slug
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query GetSubchaptersOfChapter($filters: SubchapterFiltersInput) {
+  subchapters(filters: $filters) {
+    data {
+      attributes {
+        Slug
+      }
+    }
+  }
+}
+
+query GetSubchaptersOfLevelAndCourse($filters: CourseFiltersInput, $levelsFilters2: LevelFiltersInput) {
+  courses(filters: $filters) {
+    data {
+      attributes {
+        levels(filters: $levelsFilters2) {
+          data {
+            attributes {
+              chapters {
+                data {
+                  attributes {
+                    Slug
+                    subchapters {
+                      data {
+                        attributes {
+                          Slug
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
