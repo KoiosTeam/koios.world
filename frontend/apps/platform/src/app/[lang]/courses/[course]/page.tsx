@@ -22,6 +22,9 @@ const Page = () => {
         Slug: {
           eq: currentCourse
         }
+      },
+      pagination: {
+        limit: 50
       }
     }
   });

@@ -26,7 +26,10 @@ const Page = () => {
           eq: subchapter
         }
       },
-      pagination: {
+      furtherReadingsPagination: {
+        limit: 50
+      },
+      subchaptersPagination: {
         limit: 50
       }
     },

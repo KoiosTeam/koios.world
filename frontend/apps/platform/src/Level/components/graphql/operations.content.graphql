@@ -1,11 +1,11 @@
-query GetSubchapter($filters: SubchapterFiltersInput, $pagination: PaginationArg) {
+query GetSubchapter($filters: SubchapterFiltersInput, $furtherReadingsPagination: PaginationArg, $subchaptersPagination: PaginationArg) {
   subchapters(filters: $filters) {
     data {
       attributes {
         Name
         YouTubeURL
         Literature
-        FurtherReadings(pagination: $pagination) {
+        FurtherReadings(pagination: $furtherReadingsPagination) {
           Label
           NewWindow
           URL
@@ -21,7 +21,7 @@ query GetSubchapter($filters: SubchapterFiltersInput, $pagination: PaginationArg
                         attributes {
                           Name
                           Slug
-                          subchapters {
+                          subchapters(pagination: $subchaptersPagination) {
                             data {
                               attributes {
                                 Name

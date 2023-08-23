@@ -5,22 +5,16 @@ import { useEffect, useState } from 'react';
 import defaultTheme from 'tailwindcss/defaultTheme';
 import { Drawer } from './Drawer/Drawer';
 import { Header } from './Header/Header';
-import { Inter, Righteous } from 'next/font/google'
+import { Inter } from 'next/font/google';
 
 type LayoutType = {
   children: React.ReactNode;
 };
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
-})
-
-const righteous = Righteous({ 
-  subsets: ['latin'],
-  weight: ["400"],
-  variable: '--font-righteous',
-})
+  variable: '--font-inter'
+});
 
 const koiosDrawerSettingKey = 'KoiosApp.DrawerIsUnfolded';
 
@@ -43,21 +37,23 @@ export const AppLayout = ({ children }: LayoutType) => {
     const handleResize = () => {
       const isMobile = window.innerWidth < parseInt(defaultTheme.screens.lg);
       const shouldBeUnfolded = !isMobile;
+
       if (isUnfolded !== shouldBeUnfolded) {
         toggleDrawer();
       }
     };
+
     window.addEventListener('resize', handleResize);
+
     return () => window.removeEventListener('resize', handleResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUnfolded]);
 
   return (
     <>
       <Header isUnfolded={isUnfolded} toggleDrawer={toggleDrawer} isMobile={isMobile} />
-      <Drawer isUnfolded={isUnfolded} isMobile={isMobile} />
+      <Drawer isUnfolded={isUnfolded} toggleDrawer={toggleDrawer} isMobile={isMobile} />
       <main
-        className={`${inter.variable} ${righteous.variable} font-base mt-14 h-full flex grow flex-col break-words duration-300 ease-in-out ${
+        className={`${inter.variable} font-base mt-14 h-full flex grow flex-col break-words duration-300 ease-in-out ${
           isUnfolded && !isMobile ? 'ml-72  w-[calc(100%-theme(space.72))]' : ''
         }`}
       >
