@@ -28,7 +28,7 @@ export const CoursesGrid = () => {
           <li key={course.attributes?.Name} onClick={(e) => handleListItemClick(e, `/${course.attributes?.Slug}`)}>
             <CourseCard
               name={course.attributes?.Name || ''}
-              thumbnail={course.attributes?.Thumbnail?.data?.attributes?.formats.thumbnail.url || imagePlaceholder}
+              thumbnail={course.attributes?.Thumbnail?.data?.attributes?.formats.small.url || imagePlaceholder}
               alternativeText={course.attributes?.Thumbnail?.data?.attributes?.alternativeText || 'Course thumbnail'}
             />
           </li>
