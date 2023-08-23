@@ -7,15 +7,16 @@ import {
   DrawerNavigationItemType,
   drawerNavigation,
 } from './static/drawerNavigation';
-import { LocalizedLink } from '@frontend/jsx-core';
+import Link from 'next/link';
 
 type DrawerType = {
   isUnfolded?: boolean;
   isMobile?: boolean;
+  toggleDrawer?: () => void;
 };
 
 export const Drawer = (props: DrawerType) => {
-  const { isUnfolded, isMobile } = props;
+  const { isUnfolded, isMobile, toggleDrawer } = props;
   const pathname = usePathname();
   const params = useParams();
 
@@ -28,14 +29,14 @@ export const Drawer = (props: DrawerType) => {
       } ${isUnfolded ? 'translate-x-0' : '-translate-x-full'}`}
     >
       {!isMobile && (
-        <LocalizedLink href="/" className="container mx-auto mt-16 mb-10 w-fit">
+        <Link href="/" className="container mx-auto mt-16 mb-10 w-fit">
           <Image
             src="/assets/images/logo/koios-logo.svg"
             alt="Koios Logo"
             width={150}
             height={100}
           />
-        </LocalizedLink>
+        </Link>
       )}
 
       <div className="container overflow-y-auto">
@@ -54,6 +55,7 @@ export const Drawer = (props: DrawerType) => {
                       icon={item.icon}
                       isActive={isActive}
                       newTab={item.newTab}
+                      onClick={toggleDrawer}
                     >
                       {item.name}
                     </DrawerLink>

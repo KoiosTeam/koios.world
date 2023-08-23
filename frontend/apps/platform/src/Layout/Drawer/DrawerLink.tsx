@@ -1,4 +1,4 @@
-import { Icon, IconNames, LocalizedLink } from '@frontend/jsx-core';
+import { Icon, IconNames } from '@frontend/jsx-core';
 import Link from 'next/link';
 
 type DrawerLinkType = {
@@ -7,11 +7,11 @@ type DrawerLinkType = {
   isActive: (href: string) => boolean;
   children: React.ReactNode;
   newTab?: boolean;
-  
+  onClick?: () => void;
 };
 
 export const DrawerLink = (props: DrawerLinkType) => {
-  const { href, icon, isActive, children, newTab } = props;
+  const { href, icon, isActive, children, newTab, onClick } = props;
   const activeClass = isActive(href) ? 'bg-violet-400/10 text-primary-950' : '';
 
   return (
@@ -20,6 +20,7 @@ export const DrawerLink = (props: DrawerLinkType) => {
       className={`flex items-center gap-4 rounded p-3 text-sm font-semibold duration-150 ease-in-out hover:bg-violet-400/10 hover:text-primary-950 ${activeClass}`}
       target={newTab ? '_blank' : undefined}
       rel={newTab ? 'noopener noreferrer' : undefined}
+      onClick={onClick}
     >
       <Icon name={icon} />
       {children}

@@ -471,7 +471,7 @@ export enum Enum_Componentgenericicon_Icon {
   ChevronUp = 'chevron_up',
   ChevronUpFilled = 'chevron_up_filled',
   Clipboard = 'clipboard',
-  Close = 'close',
+  Clock = 'clock',
   Earth = 'earth',
   File = 'file',
   FilePowerpoint = 'file_powerpoint',
