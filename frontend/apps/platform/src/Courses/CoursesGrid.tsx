@@ -12,6 +12,7 @@ export const CoursesGrid = () => {
   const pathname = usePathname();
   const imagePlaceholder = '/assets/images/placeholders/placeholder-image.jpg';
   const { loading, error, data } = useQuery(GetCoursesDocument);
+   const filteredCourses = data?.courses?.data.filter(course => course.attributes?.Slug !== 'growth');
 
   const handleListItemClick = (e: React.MouseEvent, path: string) => {
     e?.preventDefault();
@@ -23,8 +24,8 @@ export const CoursesGrid = () => {
 
   return (
     <ul className="w-full grid grid-cols-fit-64 gap-4 h-fit">
-      {data &&
-        data.courses?.data.map((course) => (
+      {filteredCourses &&
+        filteredCourses.map((course) => (
           <li key={course.attributes?.Name} onClick={(e) => handleListItemClick(e, `/${course.attributes?.Slug}`)}>
             <CourseCard
               name={course.attributes?.Name || ''}

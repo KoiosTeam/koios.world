@@ -12,6 +12,7 @@ import { TranslatedString } from 'apps/platform/src/I18N/components/TranslatedSt
 import { CourseOverviewPanel } from 'apps/platform/src/Course/CourseOverviewPanel/CourseOverviewPanel';
 import { CourseLearningsPanel } from 'apps/platform/src/Course/CourseLearningsPanel/CourseLearningsPanel';
 import { CourseDetailPanel } from 'apps/platform/src/Course/CourseDetailPanel/CourseDetailPanel';
+import { useEffect } from 'react';
 
 const Page = () => {
   const params = useParams();
@@ -30,6 +31,8 @@ const Page = () => {
   });
   const course = data?.courses?.data[0].attributes;
   const levels = transformToCourseLevel(course?.levels?.data || []);
+
+  
 
   if (loading) return <LoaderBox />;
   if (error) return <ErrorBox />;
