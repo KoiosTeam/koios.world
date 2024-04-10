@@ -1,4 +1,4 @@
-# Koios World
+# Koios
 
 ## Start 
 
@@ -16,4 +16,4 @@
 
 ```npm install```
 
-```npm run develop```
+```npm run develop``` 
